@@ -44,7 +44,9 @@ pip install -r requirements.txt
 
 ## Analysis
 
+- HIV-1 protease analysis (HIV-analysis.ipynb): explore cavity alignment (grid, distance matrix and contact matrix) to group cavities throughtout the molecular dynamics trajectory;
 
+- ALDH 1/2 (ALDH-analysis.ipynb): explore the difference of the substrate binding site volume between ALDH1 and ALDH2.
 
 ## License
 
