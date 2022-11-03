@@ -1,0 +1,32 @@
+# pyKVFinder results
+
+[FILES]
+INPUT = "/home/ABTLUS/joao.guerra/remote-repos/CEC-IV/data/5L13.pdb"
+OUTPUT = "/home/ABTLUS/joao.guerra/remote-repos/CEC-IV/results/ALDH/5L13.KVFinder.output.pdb"
+
+[PARAMETERS]
+STEP = 0.6
+
+[RESULTS.VOLUME]
+KAA = 453.6
+KAB = 449.28
+KAC = 470.88
+KAD = 458.35
+
+[RESULTS.AREA]
+KAA = 426.85
+KAB = 393.9
+KAC = 408.91
+KAD = 398.97
+
+[RESULTS.MAX_DEPTH]
+KAA = 11.46
+KAB = 15.57
+KAC = 15.1
+KAD = 15.29
+
+[RESULTS.AVG_DEPTH]
+KAA = 4.82
+KAB = 6.56
+KAC = 6.32
+KAD = 6.46
