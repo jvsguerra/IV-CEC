@@ -1,0 +1,8 @@
+ipywidgets==7.7.0
+KVFinderMD==0.2.1
+matplotlib==3.6.1
+mdanalysis==2.3.0
+nglview==3.0.3
+numpy==1.23.2
+serd==0.1.2
+pymol>=2.5.0
