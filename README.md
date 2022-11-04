@@ -47,6 +47,7 @@ pip install -r requirements.txt
 - HIV-1 protease ([HIV-analysis.ipynb](https://github.com/jvsguerra/IV-CEC/blob/main/HIV-analysis.ipynb)): explore cavity alignment (grid, distance matrix and contact matrix) to group cavities throughtout the molecular dynamics trajectory;
 
 - ALDH 1/2 ([ALDH-analysis.ipynb](https://github.com/jvsguerra/IV-CEC/blob/main/ALDH-analysis.ipynb)): explore the difference of the substrate binding site volume between ALDH1 and ALDH2.
+    - Dataset available in: [10.5281/zenodo.7278064](https://zenodo.org/record/7278064#.Y2Uv8pDMLd5)
 
 ## License
 
