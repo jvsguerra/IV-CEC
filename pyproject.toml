@@ -1,0 +1,23 @@
+[project]
+name = "iv-cec"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "jvsguerra", email = "jvsguerra@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.9",
+    "mdanalysis>=2.9.0",
+    "nglview>=4.0.1",
+    "numpy>=2.2.6",
+    "pykvfinder==0.4.3",
+    "serd>=0.1.2",
+    "toml>=0.10.2",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
