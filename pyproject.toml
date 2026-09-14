@@ -12,8 +12,9 @@ dependencies = [
     "matplotlib>=3.10.9",
     "mdanalysis>=2.9.0",
     "nglview>=4.0.1",
-    "numpy>=2.2.6",
+    "numpy==1.26.4",
     "pykvfinder==0.4.3",
+    "pymol-open-source-whl>=3.2.0.2",
     "serd>=0.1.2",
     "toml>=0.10.2",
 ]
