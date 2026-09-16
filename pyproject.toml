@@ -12,9 +12,11 @@ dependencies = [
     "matplotlib>=3.10.9",
     "mdanalysis>=2.9.0",
     "nglview>=4.0.1",
-    "numpy==1.26.4",
+    "numpy>=1.26.4", # numpy==1.26.4 is required
     "pykvfinder==0.4.3",
     "pymol-open-source-whl>=3.2.0.2",
+    "scikit-learn>=1.7.2",
+    "seaborn>=0.13.2",
     "serd>=0.1.2",
     "toml>=0.10.2",
 ]
@@ -22,3 +24,8 @@ dependencies = [
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16.7",
+]
