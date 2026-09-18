@@ -1,9 +1,19 @@
+import argparse
 import os
 from glob import glob
 
 from pymol import cmd
 
-ROOT = "results/spde/distance"
+parser = argparse.ArgumentParser(description="Visualize HIV cavity clusters in PyMOL.")
+parser.add_argument(
+    "--root",
+    choices=["results/spde/grid", "results/spde/distance", "results/spde/contact"],
+    required=True,
+    help="Directory containing the cavity cluster directories.",
+)
+args = parser.parse_args()
+
+ROOT = args.root
 
 colors = [
     "red",
