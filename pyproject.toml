@@ -15,6 +15,7 @@ dependencies = [
     "numpy>=1.26.4", # numpy==1.26.4 is required
     "pykvfinder==0.4.3",
     "pymol-open-source-whl>=3.2.0.2",
+    "pyqt5>=5.15.11",
     "scikit-learn>=1.7.2",
     "seaborn>=0.13.2",
     "serd>=0.1.2",
