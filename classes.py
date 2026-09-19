@@ -82,13 +82,13 @@ for state in state_dirs:
 
     # cmd.load(pdbs[0], f"{state}_ref")
     # cmd.show("spheres", f"{state}_ref")
-    # cmd.color(colors[state], f"{state}_ref")
+    # cmd.color(colors[state - 1], f"{state}_ref")
 
     # Surface visualization
-    print(colors[state])
+    print(colors[state - 1])
     cmd.hide("everything", f"{state}")
     cmd.show("surface", f"{state}")
-    cmd.color(colors[state], f"{state}")
+    cmd.color(colors[state - 1], f"{state}")
 
 
 # Transparency and visualization settings
