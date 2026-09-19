@@ -85,10 +85,10 @@ for state in state_dirs:
     # cmd.color(colors[state - 1], f"{state}_ref")
 
     # Surface visualization
-    print(colors[state - 1])
+    print(colors[state])
     cmd.hide("everything", f"{state}")
     cmd.show("surface", f"{state}")
-    cmd.color(colors[state - 1], f"{state}")
+    cmd.color(colors[state], f"{state}")
 
 
 # Transparency and visualization settings
