@@ -45,24 +45,18 @@ cmd.hide("everything", "HIV")
 cmd.show("cartoon", "HIV")
 cmd.color("green", "HIV")
 
-# Load cavities
-state_dirs = sorted(os.listdir(ROOT))
-print(args.state)
-print(args.state is not None)
-# If args.state is not set
-
+# Select state directories to load cavities from
 if args.state is None:
-    state_dirs = [
-        state for state in state_dirs if state.isdigit() and os.path.isdir(os.path.join(ROOT, state))
+    state_dirs: list[int] = [
+        int(state) for state in state_dirs if state.isdigit() and os.path.isdir(os.path.join(ROOT, state))
     ]
 else:
     # Check if the provided state directories exist and are valid
-    state_dirs = [
-        state
+    state_dirs: list[int] = [
+        int(state)
         for state in args.state
         if os.path.isdir(os.path.join(ROOT, state))
     ]
-print(state_dirs)
 
 # Load cavities
 for i, state in enumerate(state_dirs):
