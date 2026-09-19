@@ -16,6 +16,15 @@ parser.add_argument(
     nargs="+",
     help="State directory or directories whose cavities should be loaded.",
 )
+parser.add_argument(
+    "--representation",
+    choices=["spheres", "surface"],
+    default="spheres",
+    help="Representation style for the cavities (default: spheres).",
+)
+parser.add_argument(
+    "--verbose", action="store_true", help="Enable verbose output for debugging."
+)
 args = parser.parse_args()
 
 ROOT = args.root
@@ -47,6 +56,7 @@ cmd.color("green", "HIV")
 cmd.dss("HIV")
 
 # Select state directories to load cavities from
+state_dirs = [d for d in os.listdir(ROOT) if os.path.isdir(os.path.join(ROOT, d))]
 if args.state is None:
     state_dirs: list[int] = [
         int(state) for state in state_dirs if state.isdigit() and os.path.isdir(os.path.join(ROOT, state))
@@ -60,8 +70,9 @@ else:
     ]
 
 # Load cavities
-for state in state_dirs:
-    print(f"Loading cavities for state: {state}")
+for state in sorted(state_dirs):
+    if args.verbose:
+        print(f"Loading cavities for state: {state}")
     dir_path = os.path.join(ROOT, str(state))
     pdbs = glob(os.path.join(dir_path, "*.pdb"))
 
@@ -80,21 +91,27 @@ for state in state_dirs:
     for obj in selection:
         cmd.delete(obj)
 
+    if args.verbose:
+        print(f"> Color: {colors[state]}")
+
+    cmd.hide("everything", f"{state}")
+
     # Sphere visualization
-    cmd.show("spheres", f"{state}")
-    cmd.color(colors[state], f"{state}")
+    if args.representation == "spheres":
+        cmd.show("spheres", f"{state}")
+        cmd.color(colors[state], f"{state}")
 
     # Surface visualization
-    print(colors[state])
-    # cmd.hide("everything", f"{state}")
-    # cmd.show("surface", f"{state}")
-    # cmd.color(colors[state], f"{state}")
-
+    if args.representation == "surface":
+        cmd.show("surface", f"{state}")
+        cmd.color(colors[state], f"{state}")
 
 # Transparency and visualization settings
 cmd.set("transparency", 0.0)
 
 # Reduce VDW radius of H and HA atoms
+if args.verbose:
+    print("Reducing VDW radius of H and HA atoms to 0.3")
 cmd.alter("name H+HA", "vdw=0.3")
 cmd.rebuild()
 
@@ -106,7 +123,7 @@ cmd.orient("HIV")
 
 # Save the final image
 cmd.png(
-    os.path.join(ROOT, "clusters.png"),
+    os.path.join(ROOT, f"clusters_{args.representation}.png"),
     width=6000,
     height=4500,
     dpi=600,
