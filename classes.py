@@ -59,9 +59,9 @@ else:
     ]
 
 # Load cavities
-for i, state in enumerate(state_dirs):
+for state in state_dirs:
     print(f"Loading cavities for state: {state}")
-    dir_path = os.path.join(ROOT, state)
+    dir_path = os.path.join(ROOT, str(state))
     pdbs = glob(os.path.join(dir_path, "*.pdb"))
 
     if not pdbs:
@@ -81,12 +81,12 @@ for i, state in enumerate(state_dirs):
 
     # cmd.load(pdbs[0], f"{state}_ref")
     # cmd.show("spheres", f"{state}_ref")
-    # cmd.color(colors[i], f"{state}_ref")
+    # cmd.color(colors[state], f"{state}_ref")
 
     # Surface visualization
     cmd.hide("everything", f"{state}")
     cmd.show("surface", f"{state}")
-    cmd.color(colors[i], f"{state}")
+    cmd.color(colors[state], f"{state}")
 
 
 # Transparency and visualization settings
