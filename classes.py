@@ -44,6 +44,7 @@ cmd.load("data/HIV.pdb", "HIV", state=1)
 cmd.hide("everything", "HIV")
 cmd.show("cartoon", "HIV")
 cmd.color("green", "HIV")
+cmd.dss("HIV")
 
 # Select state directories to load cavities from
 if args.state is None:
