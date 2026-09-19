@@ -11,6 +11,11 @@ parser.add_argument(
     required=True,
     help="Directory containing the cavity cluster directories.",
 )
+parser.add_argument(
+    "--state",
+    nargs="+",
+    help="State directory or directories whose cavities should be loaded.",
+)
 args = parser.parse_args()
 
 ROOT = args.root
@@ -41,12 +46,28 @@ cmd.show("cartoon", "HIV")
 cmd.color("green", "HIV")
 
 # Load cavities
-for i, name in enumerate(sorted(os.listdir(ROOT))):
-    dir_path = os.path.join(ROOT, name)
+state_dirs = sorted(os.listdir(ROOT))
+print(args.state)
+print(args.state is not None)
+# If args.state is not set
 
-    if not os.path.isdir(dir_path):
-        continue
+if args.state is None:
+    state_dirs = [
+        state for state in state_dirs if state.isdigit() and os.path.isdir(os.path.join(ROOT, state))
+    ]
+else:
+    # Check if the provided state directories exist and are valid
+    state_dirs = [
+        state
+        for state in args.state
+        if os.path.isdir(os.path.join(ROOT, state))
+    ]
+print(state_dirs)
 
+# Load cavities
+for i, state in enumerate(state_dirs):
+    print(f"Loading cavities for state: {state}")
+    dir_path = os.path.join(ROOT, state)
     pdbs = glob(os.path.join(dir_path, "*.pdb"))
 
     if not pdbs:
@@ -59,19 +80,19 @@ for i, name in enumerate(sorted(os.listdir(ROOT))):
         cmd.load(pdb, obj)
         selection.append(obj)
 
-    cmd.create(f"{name}", " or ".join(selection))
+    cmd.create(f"{state}", " or ".join(selection))
 
     for obj in selection:
         cmd.delete(obj)
 
-    # cmd.load(pdbs[0], f"{name}_ref")
-    # cmd.show("spheres", f"{name}_ref")
-    # cmd.color(colors[i], f"{name}_ref")
+    # cmd.load(pdbs[0], f"{state}_ref")
+    # cmd.show("spheres", f"{state}_ref")
+    # cmd.color(colors[i], f"{state}_ref")
 
     # Surface visualization
-    cmd.hide("everything", f"{name}")
-    cmd.show("surface", f"{name}")
-    cmd.color(colors[i], f"{name}")
+    cmd.hide("everything", f"{state}")
+    cmd.show("surface", f"{state}")
+    cmd.color(colors[i], f"{state}")
 
 
 # Transparency and visualization settings
