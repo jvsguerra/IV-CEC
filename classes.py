@@ -30,22 +30,22 @@ args = parser.parse_args()
 ROOT = args.root
 
 colors = [
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "cyan",
-    "blue",
-    "violet",
-    "magenta",
-    "salmon",
-    "lime",
-    "marine",
-    "tv_blue",
-    "tv_green",
-    "olive",
-    "wheat",
-    "pink",
+    "red",            # 1
+    "orange",         # 2
+    "yellow",         # 3
+    "green",          # 4
+    "cyan",           # 5
+    "blue",           # 6
+    "violet",         # 7
+    "magenta",        # 8
+    "salmon",         # 9
+    "lime",           # 10
+    "deepblue",       # 11   # seaborn navy
+    "tv_blue",        # 12   # seaborn dodgerblue
+    "forest",         # 13   # seaborn forestgreen
+    "olive",          # 14
+    "wheat",          # 15
+    "pink",           # 16
 ]
 
 # Load HIV structure and set visualization
@@ -111,7 +111,7 @@ cmd.set("transparency", 0.0)
 
 # Reduce VDW radius of H and HA atoms
 if args.verbose:
-    print("Reducing VDW radius of H and HA atoms to 0.3")
+    print("> Reducing VDW radius of H and HA atoms to 0.3")
 cmd.alter("name H+HA", "vdw=0.3")
 cmd.rebuild()
 
