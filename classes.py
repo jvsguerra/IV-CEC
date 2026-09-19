@@ -80,15 +80,15 @@ for state in state_dirs:
     for obj in selection:
         cmd.delete(obj)
 
-    # cmd.load(pdbs[0], f"{state}_ref")
-    # cmd.show("spheres", f"{state}_ref")
-    # cmd.color(colors[state - 1], f"{state}_ref")
+    # Sphere visualization
+    cmd.show("spheres", f"{state}")
+    cmd.color(colors[state], f"{state}")
 
     # Surface visualization
     print(colors[state])
-    cmd.hide("everything", f"{state}")
-    cmd.show("surface", f"{state}")
-    cmd.color(colors[state], f"{state}")
+    # cmd.hide("everything", f"{state}")
+    # cmd.show("surface", f"{state}")
+    # cmd.color(colors[state], f"{state}")
 
 
 # Transparency and visualization settings
